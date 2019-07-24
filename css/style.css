@@ -5,10 +5,14 @@ body
 	text-align:center;
 	font: 14px/1.5 "微软雅黑",Verdana,Tahoma,Arial,sans-serif,"宋体";
 	line-height:30px;
+	background:url(../images/0.jpg);
 }
 ul,li
 {
 	list-style:none;
+}
+#girl{
+	border-radius:80px
 }
 /*弹出层遮罩*/
 .layer-mask
@@ -160,6 +164,7 @@ ul,li
 {
 	background:url(../images/111.jpg);
 	background-size: cover;
+	border-radius:55px
 }
 .swipe .ppt.second
 {
