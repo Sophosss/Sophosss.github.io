@@ -39,7 +39,7 @@ layout: post
 
 通过交叉验证获得一个全局使用的L2正则化强度，与此同时在所层后面使用随机失活也很常见。
 
-偏差和权重合并技巧：&fnof;(x<sub>i</sub> , $\omega$) = $\omega$x<sub>i</sub> ，即x~i~ 增加一个维度，数值为常量1。
+偏差和权重合并技巧：&fnof;(x<sub>i</sub> , $\omega$) = $\omega$x<sub>i</sub> ，即x<sub>i</sub> 增加一个维度，数值为常量1。
 
 ```
 1 2 3   11   7         1 2 3 7   11
