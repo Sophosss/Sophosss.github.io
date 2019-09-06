@@ -114,3 +114,5 @@ layout: post
     java中的强制类型转换只是针对单个对象的，想要偷懒将整个数组转换成另外一种类型的数组是不行的，这和数组初始化时需要一个个来也是类似的。
 
     比如`return list.toArray(new int[0][]);`
+
+14. LinkedList的add方法，`list.add(0, temp)`表示每次插入都插在队首，也就是第一个位置，`list.add(temp)`表示正常插在队尾。
