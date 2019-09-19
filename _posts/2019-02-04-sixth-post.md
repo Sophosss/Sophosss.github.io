@@ -116,3 +116,17 @@ layout: post
     比如`return list.toArray(new int[0][]);`
 
 14. LinkedList的add方法，`list.add(0, temp)`表示每次插入都插在队首，也就是第一个位置，`list.add(temp)`表示正常插在队尾。
+
+15. 一千万条数据取前20个大的数？（top k问题）
+    - 使用最小堆，对20个数据建堆，依次遍历剩下的所有数，若比堆顶元素大，则替换并调整堆。
+    - 使用分治法，快速排序中的partition思想。
+
+16. `Arrays.sort(people, (o1,o2) -> o1[0] == o2[0] ? o1[1] - o2[1] : o2[0] - o1[0]);`
+
+    该语句可以让数组按第一位降序，第二位升序排列。
+
+17. a & (-a) 可以获得a最低的非0位，求解[260. 只出现一次的数字 III](https://leetcode-cn.com/problems/single-number-iii/)的关键。
+
+18. [172. 阶乘后的零](https://leetcode-cn.com/problems/factorial-trailing-zeroes/submissions/) 计算含有多少个5就可以了。
+
+19. [231. 2的幂](https://leetcode-cn.com/problems/power-of-two/submissions/) 判断`n & n-1 == 0`就可以了。

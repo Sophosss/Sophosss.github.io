@@ -38,7 +38,7 @@ layout: post
 
 7. ArrayList 的扩容机制？
 
-   先看`add()`方法的源码，当向`ArrayList`对象中添加新元素时，首先会调用`ensureCapacityInternal(size)`方法，`size`为最小扩容量；`ensureCapacityInternal()`方法会首先调用`calculateCapacity`来确定需要的最小容量；最后调用`ensureExplicitCapacity()`方法判断时候需要扩容。最后判断所需最小容量如果大于当前数组的空间大小，则需要扩容，调用`grow()`方法扩容。
+   先看`add()`方法的源码，当向`ArrayList`对象中添加新元素时，首先会调用`ensureCapacityInternal(size)`方法，`size`为最小扩容量；`ensureCapacityInternal()`方法会首先调用`calculateCapacity`来确定需要的最小容量；最后调用`ensureExplicitCapacity()`方法判断是否需要扩容。最后判断所需最小容量如果大于当前数组的空间大小，则需要扩容，调用`grow()`方法扩容。
 
    言而言之，`ArrayList`扩容的本质就是计算所需扩容`size`得到新的数组，将原数组中的数据复制到新数组中，最后将原数组指向新数组在堆内存的引用地址即可。
 
@@ -52,7 +52,7 @@ layout: post
 
 10. 上下文切换？
 
-    并发编程中实际线程的数量都可能大于CPU核心的个数，而COU一个核心在任意时刻只能被一个线程使用，CPU为了保证并发的线程都有被执行，采用随机分配时间片并轮转的方式。而一个线程的时间片用户将保存并进入就绪状态直到下次分配时间片再执行，这个任务从保存到再加载的过程就是一次上下文切换。
+    并发编程中实际线程的数量都可能大于CPU核心的个数，而CPU一个核心在任意时刻只能被一个线程使用，CPU为了保证并发的线程都有被执行，采用随机分配时间片并轮转的方式。而一个线程的时间片用户将保存并进入就绪状态直到下次分配时间片再执行，这个任务从保存到再加载的过程就是一次上下文切换。
 
 11. sleep() 方法和 wait() 方法的区别？
     - sleep 方法没有释放锁，wait 方法释放了锁
@@ -114,9 +114,10 @@ layout: post
     vector， stack，hashtable， enumeration，StringBuffer，ConcurrentHashMap，blockingQueue
 
 21. MyISAM 和 InnoDB？
-    - InnoDB是事务安全的，支持行级锁，不支持全文索引，适合高并发
-    - MyISAM 是非事务安全的，表级锁，支持全文类型索引，性能优先
-
+    - InnoDB是事务安全的，支持行级锁，适合高并发，支持外键，支持MVCC
+    - MyISAM 是非事务安全的，表级锁，性能优先，不支持外键，不支持MVCC
+    - ps：应对高并发事务, MVCC比单纯的加锁更高效；MVCC只在 `READ COMMITTED` 和 `REPEATABLE READ` 两个隔离级别下工作；MVCC可以使用 乐观(optimistic)锁 和 悲观(pessimistic)锁来实现。
+    
 22. Java 中 new 一个对象的步骤?
 
     - 首先去检查这个指令的参数是否能在常量池中能否定位到一个类的符号引用，并且验证是否是第一次使用该类。
@@ -136,3 +137,18 @@ layout: post
 24. 泛型的使用？
 
     泛型类、泛型接口、泛型方法
+
+25. servlet 的生命周期？
+    - 在客户端请求servlet时，Tomcat容器会检测是否有请求的servlet的实例存在。
+    - 如果servlet实例不存在，则调用其构造方法创建servlet的实例，在实例被创建成功后调用init()方法进行初始化工作，初始化成后将该Servlet保存起来以备后续请求使用，再调用service()方法处理客户端的请求。如果是get请求，service()方法调用doGet()方法处理客户端请求；如果是post请求，service()方法调用doPost()方法处理客户端请求。
+    - 如果Servlet实例存在，则调用其service方法，如果是get请求，service()方法调用doGet()方法处理客户端请求，如果是post请求，service()方法调用doPost()方法处理客户请求。
+    - 当容器关闭时，调用Servlet的destroy()方法。
+      
+
+26. IOC, DI, AOP
+    - IOC ：借助于“第三方”(Spring 中的 IOC 容器) 实现具有依赖关系的对象之间的解耦(IOC容易管理对象，你只管使用即可)，从而降低代码之间的耦合度。
+    - DI ：是实现控制反转的一种设计模式，依赖注入就是将实例变量传入到一个对象中去。
+
+27. Spring 的工厂设计模式？
+    - `BeanFactory` ：延迟注入(使用到某个 bean 的时候才会注入),相比于`BeanFactory` 来说会占用更少的内存，程序启动速度更快。
+    - `ApplicationContext` ：容器启动的时候，不管你用没用到，一次性创建所有 bean 。`BeanFactory` 仅提供了最基本的依赖注入支持，` ApplicationContext` 扩展了 `BeanFactory` , 除了有`BeanFactory`的功能还有额外更多功能，所以一般开发人员使用` ApplicationContext`会更多。`ClassPathXmlApplication` 是它的一个实现类。
