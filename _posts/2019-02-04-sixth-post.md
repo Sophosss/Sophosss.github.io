@@ -130,3 +130,13 @@ layout: post
 18. [172. 阶乘后的零](https://leetcode-cn.com/problems/factorial-trailing-zeroes/submissions/) 计算含有多少个5就可以了。
 
 19. [231. 2的幂](https://leetcode-cn.com/problems/power-of-two/submissions/) 判断`n & n-1 == 0`就可以了。
+
+20. 栈实现队列：A吃B，A吃，A吐B；队列实现栈：A吃，A吃B，互换；最后都是用B结构来取数。
+
+21. 进行字符串按点(.)切分时，必须要注意转义！`String t[] = s.split("\\.");`
+
+22. 海量日志数据，提取出某日访问百度次数最多的那个IP。
+
+- 分而治之/hash映射：针对数据太大，内存受限，只能是：把大文件化成(取模映射)小文件，即16字方针：大而化小，各个击破，缩小规模，逐个解决
+- hash统计：当大文件转化了小文件，那么我们便可以采用常规的Hashmap(ip，value)或trie树来进行频率统计。
+- 堆/快速排序：统计完了之后，便进行排序(可采取最小堆)，得到次数最多的IP。
