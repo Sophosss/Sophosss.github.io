@@ -127,9 +127,13 @@ layout: post
 
 17. a & (-a) 可以获得a最低的非0位，求解[260. 只出现一次的数字 III](https://leetcode-cn.com/problems/single-number-iii/)的关键。
 
-18. [172. 阶乘后的零](https://leetcode-cn.com/problems/factorial-trailing-zeroes/submissions/) 计算含有多少个5就可以了。
+18. n & (n-1)可以消除二进制的一个1，可用于判断2的方幂。
 
-19. [231. 2的幂](https://leetcode-cn.com/problems/power-of-two/submissions/) 判断`n & n-1 == 0`就可以了。
+19. 使用位运算符注意括号！运算符有优先级。例如：`(array[j] & 1) == 0 && (array[j+1] & 1) != 0`
+
+20. [172. 阶乘后的零](https://leetcode-cn.com/problems/factorial-trailing-zeroes/submissions/) 计算含有多少个5就可以了。
+
+21. [231. 2的幂](https://leetcode-cn.com/problems/power-of-two/submissions/) 判断`n & n-1 == 0`就可以了。
 
 20. 栈实现队列：A吃B，A吃，A吐B；队列实现栈：A吃，A吃B，互换；最后都是用B结构来取数。
 
@@ -140,3 +144,5 @@ layout: post
 - 分而治之/hash映射：针对数据太大，内存受限，只能是：把大文件化成(取模映射)小文件，即16字方针：大而化小，各个击破，缩小规模，逐个解决
 - hash统计：当大文件转化了小文件，那么我们便可以采用常规的Hashmap(ip，value)或trie树来进行频率统计。
 - 堆/快速排序：统计完了之后，便进行排序(可采取最小堆)，得到次数最多的IP。
+
+23. 链表的操作有半数情况需要使用 dummy 节点，比如删除倒数第N个节点，需要考虑删除头节点的情况。
