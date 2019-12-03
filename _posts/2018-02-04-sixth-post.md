@@ -1,5 +1,5 @@
 ---
-title: Leetcode快乐源泉
+title: 快乐的源泉是什么
 author: Sophosss
 layout: post
 ---
@@ -146,3 +146,14 @@ layout: post
 - 堆/快速排序：统计完了之后，便进行排序(可采取最小堆)，得到次数最多的IP。
 
 23. 链表的操作有半数情况需要使用 dummy 节点，比如删除倒数第N个节点，需要考虑删除头节点的情况。
+24. `List<Integer>`如果要转化为`int []`数组，可以使用`list.stream().mapToInt(Integer::valueOf).toArray();`
+
+25. 约瑟夫环问题递推公式 `f[1] = 0; f[i] = (f[i -1] + m) % i;`
+
+26. 卡特兰数递推公式
+    $$
+    C_{n} = C_{n-1}\frac{4*n-2}{n+1}
+    $$
+    
+
+27. 

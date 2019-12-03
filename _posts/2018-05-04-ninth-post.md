@@ -1,5 +1,5 @@
 ---
-title: 数据库小知识
+title: DB Knowledge
 author: Sophosss
 layout: post
 ---
@@ -108,3 +108,12 @@ layout: post
     - group by 是按照哪个字段进行分组，比如按照名字分组，则是所有名字相同的分为一组。在一些计数及求和中用到最多。
     - order by 是按哪个字段进行排序。
 
+13. redis 和 memcached 的区别？
+
+    - redis支持更丰富的数据类型（支持更复杂的应用场景）：Redis不仅仅支持简单的k/v类型的数据，同时还提供list，set，zset，hash等数据结构的存储。memcache支持简单的数据类型，String。
+
+    - Redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用,而Memecache把数据全部存在内存之中。
+
+    - 集群模式：memcached没有原生的集群模式，需要依靠客户端来实现往集群中分片写入数据；但是 redis 目前是原生支持 cluster 模式的.
+
+    - Memcached是多线程，非阻塞IO复用的网络模型；Redis使用单线程的多路 IO 复用模型。

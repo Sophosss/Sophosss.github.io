@@ -14,8 +14,8 @@ layout: post
 执行过程
 
 - 首先进行环境配置，通常是一些环境变量的设置
-- [执行start-dfs.sh](http://xn--start-dfs-4u8rx844a.sh/)，启动hdfs
-- [执行start-yarn.sh](http://xn--start-yarn-7b9tv146a.sh/)，启动yarn
+- 执行start-dfs.sh，启动hdfs
+- 执行start-yarn.sh，启动yarn
 
 ### start-dfs.sh脚本是如何执行的
 

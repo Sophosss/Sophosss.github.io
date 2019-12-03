@@ -10,6 +10,12 @@ layout: post
 
 当我们定义了一个自定义返回参数格式时，希望得到统一的返回，如果在运行时发现了异常，也希望将异常统一返回。那么，如何让我们的异常得到期望的返回格式，这里就需要用到了`@ControllerAdvice`或者`@RestControllerAdvice`。如果全部异常处理返回 Json，那么可以使用 `@RestControllerAdvice` 代替` @ControllerAdvice` ，这样在方法上就可以不需要添加 `@ResponseBody`。
 
+### 为什么要这么多异常？
+
+Spring默认只对运行期异常进行事务回滚操作，对于编译期异常时不进行回滚的，所以这也是我们为什么一直强调要手动创建异常类。
+
+这里就是要将所有编译期异常转换为运行期异常，因为我们定义的所有异常最终都是继承RuntimeException。
+
 下面给出我的样例demo：
 
 1. 创建自定义异常类

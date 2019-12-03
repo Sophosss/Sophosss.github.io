@@ -1,5 +1,5 @@
 ---
-title: Java小知识(1)
+title: 你知道的Java
 author: Sophosss
 layout: post
 ---
